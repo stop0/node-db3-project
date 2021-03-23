@@ -28,7 +28,11 @@ router.get('/', (req, res, next) => {
     .then(schemes => {
       res.json(schemes)
     })
-    .catch(next)
+    .catch(() => {
+      res.status(500).json({ message: "Failed to get schemes" });
+
+    })
+    next()
 })
 
 /*
